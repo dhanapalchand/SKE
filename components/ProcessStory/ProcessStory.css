@@ -1,0 +1,383 @@
+/* ============================================================
+   ProcessStory — Scroll-driven industrial process timeline
+   ============================================================ */
+
+.process-story {
+  position: relative;
+  background-color: var(--carbon-black);
+  color: var(--text-light);
+}
+
+/* Section intro */
+.process-intro {
+  text-align: center;
+  padding: var(--space-section) var(--gutter) var(--space-3xl);
+  max-width: var(--container-narrow);
+  margin: 0 auto;
+}
+
+.process-intro-label {
+  font-size: var(--fs-label);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-widest);
+  text-transform: uppercase;
+  color: var(--activation-amber);
+  margin-bottom: var(--space-lg);
+}
+
+.process-intro-headline {
+  font-size: var(--fs-h1);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-tight);
+  margin-bottom: var(--space-lg);
+}
+
+.process-intro-text {
+  font-size: var(--fs-body-lg);
+  color: rgba(255, 255, 255, 0.55);
+  line-height: var(--lh-relaxed);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Stage container */
+.process-stages {
+  position: relative;
+}
+
+/* Individual stage */
+.process-stage {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: var(--space-3xl) var(--gutter);
+  overflow: hidden;
+}
+
+/* Stage background effects */
+.process-stage-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  transition: opacity 0.8s var(--ease-out);
+}
+
+/* Brown theme for raw material */
+.process-stage[data-theme="brown"] .process-stage-bg {
+  background: linear-gradient(135deg, rgba(107, 66, 38, 0.12) 0%, transparent 70%);
+}
+
+/* Amber theme for carbonization */
+.process-stage[data-theme="amber"] .process-stage-bg {
+  background: 
+    radial-gradient(ellipse at 60% 50%, rgba(217, 119, 6, 0.18) 0%, transparent 60%),
+    linear-gradient(180deg, rgba(217, 119, 6, 0.05) 0%, transparent 100%);
+}
+
+.process-stage[data-theme="amber"] .stage-glow {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(217,119,6,0.2) 0%, transparent 70%);
+  top: 40%;
+  right: 20%;
+  transform: translate(50%, -50%);
+  animation: pulse-glow 3s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Dark theme for activation */
+.process-stage[data-theme="dark"] .process-stage-bg {
+  background: 
+    radial-gradient(ellipse at 40% 60%, rgba(217, 119, 6, 0.08) 0%, transparent 50%),
+    linear-gradient(180deg, var(--charcoal) 0%, var(--carbon-black) 100%);
+}
+
+/* Charcoal theme for crushing */
+.process-stage[data-theme="charcoal"] .process-stage-bg {
+  background: linear-gradient(135deg, var(--charcoal) 0%, var(--carbon-black) 100%);
+}
+
+/* Grey theme for QC */
+.process-stage[data-theme="grey"] .process-stage-bg {
+  background: linear-gradient(180deg, var(--charcoal-light) 0%, var(--carbon-black) 100%);
+}
+
+/* Stage inner layout */
+.process-stage-inner {
+  position: relative;
+  z-index: 2;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4xl);
+  align-items: center;
+}
+
+.process-stage:nth-child(even) .process-stage-inner {
+  direction: rtl;
+}
+
+.process-stage:nth-child(even) .process-stage-inner > * {
+  direction: ltr;
+}
+
+/* Stage text */
+.process-stage-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.stage-number {
+  font-size: var(--fs-display);
+  font-weight: var(--fw-extrabold);
+  line-height: 1;
+  letter-spacing: var(--ls-tight);
+  color: rgba(255, 255, 255, 0.06);
+  position: absolute;
+  top: -0.15em;
+  left: 0;
+  pointer-events: none;
+  user-select: none;
+}
+
+.stage-label {
+  font-size: var(--fs-label);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-widest);
+  text-transform: uppercase;
+  color: var(--activation-amber);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.stage-label-line {
+  width: 30px;
+  height: 1px;
+  background: var(--activation-amber);
+}
+
+.stage-title {
+  font-size: var(--fs-h2);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--ls-tight);
+}
+
+.stage-description {
+  font-size: var(--fs-body-lg);
+  color: rgba(255, 255, 255, 0.6);
+  line-height: var(--lh-relaxed);
+  max-width: 480px;
+}
+
+.stage-technical-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: rgba(217, 119, 6, 0.1);
+  border: 1px solid rgba(217, 119, 6, 0.25);
+  border-radius: var(--radius-full);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-wider);
+  text-transform: uppercase;
+  color: var(--activation-amber-light);
+  width: fit-content;
+}
+
+/* Stage visual */
+.process-stage-visual {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--charcoal);
+}
+
+.process-stage-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.stage-visual-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* Heat distortion effect for carbonization */
+.process-stage[data-theme="amber"] .stage-visual-overlay {
+  background: linear-gradient(180deg, transparent 60%, rgba(217, 119, 6, 0.15) 100%);
+  mix-blend-mode: overlay;
+}
+
+/* Quality parameters */
+.stage-parameters {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-top: var(--space-md);
+}
+
+.stage-parameter {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-small);
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.stage-parameter-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--activation-amber);
+  flex-shrink: 0;
+}
+
+/* Progress timeline (vertical connector) */
+.process-progress {
+  position: absolute;
+  left: var(--gutter);
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: rgba(255, 255, 255, 0.06);
+  z-index: 5;
+  display: none;
+}
+
+.process-progress-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: var(--activation-amber);
+  transition: height 0.1s linear;
+}
+
+.process-progress-dot {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--activation-amber);
+  border: 2px solid var(--carbon-black);
+  z-index: 1;
+}
+
+/* Porous structure visualization */
+.porous-viz {
+  position: relative;
+  aspect-ratio: 4/3;
+  background: var(--charcoal);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.porous-grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  gap: 3px;
+  width: 80%;
+  height: 70%;
+}
+
+.pore {
+  border-radius: 50%;
+  background: rgba(217, 119, 6, 0.15);
+  border: 1px solid rgba(217, 119, 6, 0.3);
+  transition: transform 0.5s var(--ease-out), opacity 0.5s var(--ease-out);
+}
+
+.pore.active {
+  background: rgba(217, 119, 6, 0.3);
+  transform: scale(1.1);
+}
+
+.porous-label {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-wider);
+  text-transform: uppercase;
+  color: var(--activation-amber-light);
+  background: rgba(0,0,0,0.6);
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--radius-sm);
+}
+
+/* Granule fall animation for crushing */
+.granule-container {
+  position: relative;
+  aspect-ratio: 4/3;
+  background: var(--charcoal);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.granule-fall {
+  position: absolute;
+  border-radius: 30%;
+  background: var(--carbon-black);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.screen-line {
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: rgba(255,255,255,0.15);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .process-stage-inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-2xl);
+  }
+
+  .process-stage:nth-child(even) .process-stage-inner {
+    direction: ltr;
+  }
+
+  .process-stage {
+    min-height: auto;
+    padding: var(--space-3xl) var(--gutter);
+  }
+
+  .stage-number {
+    font-size: 4rem;
+  }
+
+  .stage-parameters {
+    grid-template-columns: 1fr;
+  }
+
+  .process-progress {
+    display: block;
+  }
+}

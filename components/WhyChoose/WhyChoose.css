@@ -1,0 +1,97 @@
+/* ============================================================
+   WhyChoose — Editorial differentiators section
+   ============================================================ */
+
+.why-choose {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  overflow: hidden;
+}
+
+.why-choose-inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: var(--space-section) var(--gutter);
+}
+
+.why-choose-header {
+  margin-bottom: var(--space-4xl);
+}
+
+.why-choose-label {
+  font-size: var(--fs-label);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-widest);
+  text-transform: uppercase;
+  color: var(--activation-amber);
+  margin-bottom: var(--space-lg);
+}
+
+.why-choose-headline {
+  font-size: var(--fs-h1);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-tight);
+  max-width: 600px;
+}
+
+/* Staggered editorial layout */
+.why-choose-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--border-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.why-feature {
+  background: #fff;
+  padding: var(--space-2xl) var(--space-xl);
+  position: relative;
+  transition: background-color var(--duration-normal);
+}
+
+.why-feature:hover {
+  background: var(--off-white);
+}
+
+.why-feature-number {
+  font-size: var(--fs-display);
+  font-weight: var(--fw-extrabold);
+  color: rgba(0,0,0,0.03);
+  position: absolute;
+  top: 0.5rem;
+  right: 1rem;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.why-feature-title {
+  font-size: var(--fs-h4);
+  font-weight: var(--fw-bold);
+  margin-bottom: var(--space-sm);
+  letter-spacing: 0.01em;
+}
+
+.why-feature-desc {
+  font-size: var(--fs-small);
+  color: var(--tech-grey);
+  line-height: var(--lh-relaxed);
+  max-width: 320px;
+}
+
+.why-feature-line {
+  width: 30px;
+  height: 2px;
+  background: var(--activation-amber);
+  margin-bottom: var(--space-md);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .why-choose-grid {
+    grid-template-columns: 1fr;
+  }
+}

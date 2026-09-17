@@ -1,0 +1,179 @@
+/* ============================================================
+   GlobalSupply — Dark world map section
+   ============================================================ */
+
+.global-supply {
+  background-color: var(--carbon-black);
+  color: var(--text-light);
+  position: relative;
+  overflow: hidden;
+}
+
+.global-supply-inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: var(--space-section) var(--gutter);
+  position: relative;
+  z-index: 2;
+}
+
+/* Background map */
+.global-map-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.08;
+}
+
+.global-map-bg svg {
+  width: 90%;
+  max-width: 1200px;
+  height: auto;
+}
+
+.global-supply-header {
+  text-align: center;
+  margin-bottom: var(--space-4xl);
+}
+
+.global-supply-label {
+  font-size: var(--fs-label);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-widest);
+  text-transform: uppercase;
+  color: var(--activation-amber);
+  margin-bottom: var(--space-lg);
+}
+
+.global-supply-headline {
+  font-size: var(--fs-h1);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-tight);
+  margin-bottom: var(--space-lg);
+}
+
+.global-supply-subtext {
+  font-size: var(--fs-body-lg);
+  color: rgba(255,255,255,0.5);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: var(--lh-relaxed);
+}
+
+/* Map visualization */
+.global-map-container {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto var(--space-4xl);
+  aspect-ratio: 2/1;
+}
+
+.global-map-svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* India origin dot */
+.origin-dot {
+  fill: var(--activation-amber);
+  filter: drop-shadow(0 0 8px rgba(217, 119, 6, 0.6));
+}
+
+.origin-pulse {
+  fill: none;
+  stroke: var(--activation-amber);
+  stroke-width: 1;
+  opacity: 0;
+  animation: origin-pulse 2s ease-out infinite;
+}
+
+@keyframes origin-pulse {
+  0% { r: 4; opacity: 0.8; }
+  100% { r: 20; opacity: 0; }
+}
+
+/* Connection lines */
+.supply-line {
+  fill: none;
+  stroke: var(--activation-amber);
+  stroke-width: 1;
+  stroke-dasharray: 4 4;
+  opacity: 0.3;
+  animation: dash-flow 2s linear infinite;
+}
+
+@keyframes dash-flow {
+  to { stroke-dashoffset: -16; }
+}
+
+/* Region dots */
+.region-dot {
+  fill: rgba(255,255,255,0.4);
+  transition: fill 0.3s, r 0.3s;
+}
+
+.region-dot:hover {
+  fill: var(--activation-amber);
+}
+
+/* Region labels */
+.region-label {
+  font-size: 9px;
+  fill: rgba(255,255,255,0.4);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+/* Origin badge */
+.origin-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: rgba(217, 119, 6, 0.12);
+  border: 1px solid rgba(217, 119, 6, 0.25);
+  border-radius: var(--radius-full);
+  font-size: var(--fs-small);
+  font-weight: var(--fw-bold);
+  color: var(--activation-amber-light);
+  letter-spacing: var(--ls-wide);
+}
+
+.origin-badge-arrow {
+  font-size: 1.2em;
+}
+
+/* Target regions */
+.global-regions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-md);
+  margin-top: var(--space-2xl);
+}
+
+.global-region-tag {
+  padding: 0.625rem 1.25rem;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius-full);
+  font-size: var(--fs-small);
+  color: rgba(255,255,255,0.6);
+  transition: border-color var(--duration-normal), color var(--duration-normal);
+}
+
+.global-region-tag:hover {
+  border-color: var(--activation-amber);
+  color: var(--activation-amber-light);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .global-map-container {
+    aspect-ratio: 3/2;
+  }
+}

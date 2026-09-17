@@ -1,0 +1,174 @@
+/* ============================================================
+   Applications — Interactive application map
+   ============================================================ */
+
+.applications {
+  background-color: var(--carbon-black);
+  color: var(--text-light);
+  position: relative;
+  overflow: hidden;
+}
+
+.applications-inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: var(--space-section) var(--gutter);
+}
+
+.applications-header {
+  text-align: center;
+  margin-bottom: var(--space-4xl);
+}
+
+.applications-label {
+  font-size: var(--fs-label);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-widest);
+  text-transform: uppercase;
+  color: var(--activation-amber);
+  margin-bottom: var(--space-lg);
+}
+
+.applications-headline {
+  font-size: var(--fs-h1);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-tight);
+  margin-bottom: var(--space-md);
+}
+
+.applications-subtext {
+  font-size: var(--fs-body-lg);
+  color: rgba(255,255,255,0.5);
+  max-width: 550px;
+  margin: 0 auto;
+}
+
+/* Application grid */
+.applications-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: rgba(255,255,255,0.06);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.application-card {
+  position: relative;
+  background: var(--charcoal);
+  padding: var(--space-2xl) var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  transition: background-color var(--duration-normal) var(--ease-out),
+              transform var(--duration-normal) var(--ease-out);
+  cursor: default;
+  min-height: 200px;
+  overflow: hidden;
+}
+
+.application-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--activation-amber);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--duration-normal) var(--ease-out);
+}
+
+.application-card:hover::before {
+  transform: scaleX(1);
+}
+
+.application-card:hover {
+  background: var(--charcoal-light);
+}
+
+/* Particle effect on hover */
+.application-card-particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.app-particle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--activation-amber);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.application-card:hover .app-particle {
+  opacity: 0.4;
+  animation: particle-drift 3s ease-out infinite;
+}
+
+.application-card-number {
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-widest);
+  color: var(--activation-amber);
+  opacity: 0.6;
+}
+
+.application-card-title {
+  font-size: var(--fs-h4);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-snug);
+}
+
+.application-card-desc {
+  font-size: var(--fs-small);
+  color: rgba(255,255,255,0.5);
+  line-height: var(--lh-relaxed);
+}
+
+.application-card-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  background: rgba(217, 119, 6, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--activation-amber);
+  margin-bottom: var(--space-sm);
+}
+
+.application-card-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Last card spanning full width if odd number */
+.application-card:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+  max-width: none;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .applications-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .applications-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .application-card {
+    padding: var(--space-xl);
+    min-height: auto;
+  }
+}

@@ -1,0 +1,173 @@
+/* ============================================================
+   Quality — Laboratory-inspired interface
+   ============================================================ */
+
+.quality {
+  background-color: var(--charcoal);
+  color: var(--text-light);
+  position: relative;
+  overflow: hidden;
+}
+
+.quality-inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: var(--space-section) var(--gutter);
+}
+
+.quality-header {
+  text-align: center;
+  margin-bottom: var(--space-4xl);
+}
+
+.quality-label {
+  font-size: var(--fs-label);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-widest);
+  text-transform: uppercase;
+  color: var(--activation-amber);
+  margin-bottom: var(--space-lg);
+}
+
+.quality-headline {
+  font-size: var(--fs-h1);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-tight);
+}
+
+/* Gauge grid */
+.quality-gauges {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-xl);
+  margin-bottom: var(--space-4xl);
+}
+
+.quality-gauge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-xl);
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: var(--radius-lg);
+  transition: border-color var(--duration-normal);
+}
+
+.quality-gauge:hover {
+  border-color: rgba(217, 119, 6, 0.3);
+}
+
+.gauge-svg {
+  width: 100px;
+  height: 100px;
+  transform: rotate(-90deg);
+}
+
+.gauge-track {
+  fill: none;
+  stroke: rgba(255,255,255,0.06);
+  stroke-width: 6;
+}
+
+.gauge-fill {
+  fill: none;
+  stroke: var(--activation-amber);
+  stroke-width: 6;
+  stroke-linecap: round;
+  stroke-dasharray: 283;
+  stroke-dashoffset: 283;
+  transition: stroke-dashoffset 1.5s var(--ease-out);
+}
+
+.gauge-fill.animated {
+  stroke-dashoffset: var(--gauge-target);
+}
+
+.gauge-label {
+  font-size: var(--fs-small);
+  font-weight: var(--fw-semibold);
+  color: rgba(255,255,255,0.8);
+  text-align: center;
+}
+
+.gauge-value {
+  font-size: var(--fs-xs);
+  color: var(--activation-amber);
+  font-weight: var(--fw-medium);
+}
+
+/* Documents */
+.quality-docs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+  margin-bottom: var(--space-3xl);
+}
+
+.quality-doc {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-lg);
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: var(--radius-md);
+  transition: border-color var(--duration-normal);
+}
+
+.quality-doc:hover {
+  border-color: rgba(217, 119, 6, 0.3);
+}
+
+.quality-doc-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  background: rgba(217, 119, 6, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--activation-amber);
+  flex-shrink: 0;
+}
+
+.quality-doc-icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.quality-doc-name {
+  font-size: var(--fs-small);
+  font-weight: var(--fw-medium);
+}
+
+.quality-cta {
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .quality-gauges {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-md);
+  }
+}
+
+@media (max-width: 768px) {
+  .quality-gauges {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .quality-docs {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .quality-gauges {
+    grid-template-columns: 1fr;
+  }
+}

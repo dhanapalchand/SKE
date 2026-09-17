@@ -1,0 +1,146 @@
+/* ============================================================
+   Packaging — Industrial packaging showcase
+   ============================================================ */
+
+.packaging {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.packaging-inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: var(--space-section) var(--gutter);
+}
+
+.packaging-header {
+  text-align: center;
+  margin-bottom: var(--space-4xl);
+}
+
+.packaging-label {
+  font-size: var(--fs-label);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-widest);
+  text-transform: uppercase;
+  color: var(--activation-amber);
+  margin-bottom: var(--space-lg);
+}
+
+.packaging-headline {
+  font-size: var(--fs-h1);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-tight);
+  margin-bottom: var(--space-md);
+}
+
+.packaging-subtext {
+  font-size: var(--fs-body-lg);
+  color: var(--tech-grey);
+  max-width: 550px;
+  margin: 0 auto;
+}
+
+/* Packaging options grid */
+.packaging-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-lg);
+  margin-bottom: var(--space-3xl);
+}
+
+.packaging-card {
+  background: #fff;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: var(--space-2xl) var(--space-lg);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+  transition: border-color var(--duration-normal), box-shadow var(--duration-normal);
+}
+
+.packaging-card:hover {
+  border-color: var(--activation-amber);
+  box-shadow: var(--shadow-md);
+}
+
+.packaging-card-visual {
+  width: 80px;
+  height: 80px;
+  border-radius: var(--radius-md);
+  background: var(--carbon-black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-sm);
+}
+
+.packaging-card-visual svg {
+  width: 32px;
+  height: 32px;
+  color: var(--activation-amber);
+}
+
+.packaging-card-size {
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-extrabold);
+  color: var(--carbon-black);
+}
+
+.packaging-card-type {
+  font-size: var(--fs-small);
+  font-weight: var(--fw-semibold);
+  color: var(--activation-amber);
+  letter-spacing: 0.02em;
+}
+
+.packaging-card-desc {
+  font-size: var(--fs-small);
+  color: var(--tech-grey);
+  line-height: var(--lh-relaxed);
+}
+
+/* Packaging types row */
+.packaging-types {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-md);
+}
+
+.packaging-type-tag {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: var(--carbon-black);
+  color: var(--text-light);
+  border-radius: var(--radius-full);
+  font-size: var(--fs-small);
+  font-weight: var(--fw-medium);
+}
+
+.packaging-type-tag::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--activation-amber);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .packaging-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .packaging-grid {
+    grid-template-columns: 1fr;
+  }
+}

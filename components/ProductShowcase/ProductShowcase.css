@@ -1,0 +1,209 @@
+/* ============================================================
+   ProductShowcase — Technical product display
+   ============================================================ */
+
+.product-showcase {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Product transition header */
+.product-transition {
+  text-align: center;
+  padding: var(--space-section) var(--gutter);
+  max-width: var(--container-narrow);
+  margin: 0 auto;
+}
+
+.product-transition-label {
+  font-size: var(--fs-label);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-widest);
+  text-transform: uppercase;
+  color: var(--activation-amber);
+  margin-bottom: var(--space-lg);
+}
+
+.product-transition h2 {
+  font-size: var(--fs-h1);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-tight);
+  margin-bottom: var(--space-lg);
+}
+
+.product-transition p {
+  font-size: var(--fs-body-lg);
+  color: var(--tech-grey);
+  line-height: var(--lh-relaxed);
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+/* Product detail grid */
+.product-detail {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--gutter) var(--space-section);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3xl);
+  align-items: start;
+}
+
+/* Spec card */
+.product-specs-card {
+  background: #fff;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: var(--space-2xl);
+  box-shadow: var(--shadow-sm);
+}
+
+.product-specs-title {
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-bold);
+  margin-bottom: var(--space-xl);
+  padding-bottom: var(--space-md);
+  border-bottom: 2px solid var(--activation-amber);
+  display: inline-block;
+}
+
+.specs-grid {
+  display: grid;
+  gap: 0;
+}
+
+.spec-row {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: var(--space-md);
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--border-color);
+  align-items: center;
+}
+
+.spec-row:last-child {
+  border-bottom: none;
+}
+
+.spec-label {
+  font-size: var(--fs-small);
+  font-weight: var(--fw-semibold);
+  color: var(--tech-grey);
+  letter-spacing: 0.02em;
+}
+
+.spec-value {
+  font-size: var(--fs-body);
+  font-weight: var(--fw-medium);
+  color: var(--text-primary);
+}
+
+.product-note {
+  margin-top: var(--space-lg);
+  padding: var(--space-md);
+  background: rgba(217, 119, 6, 0.06);
+  border-left: 3px solid var(--activation-amber);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: var(--fs-small);
+  color: var(--tech-grey-dark);
+  line-height: var(--lh-relaxed);
+}
+
+/* Grade comparison */
+.grade-comparison {
+  background: #fff;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.grade-header {
+  padding: var(--space-xl) var(--space-2xl);
+  background: var(--carbon-black);
+  color: var(--text-light);
+}
+
+.grade-header h3 {
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-bold);
+  margin-bottom: var(--space-xs);
+}
+
+.grade-header p {
+  font-size: var(--fs-small);
+  color: var(--tech-grey);
+}
+
+.grade-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.grade-table thead {
+  background: var(--bg-section-alt);
+}
+
+.grade-table th {
+  padding: 0.875rem 1.25rem;
+  text-align: left;
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-wider);
+  text-transform: uppercase;
+  color: var(--tech-grey);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.grade-table td {
+  padding: 1rem 1.25rem;
+  font-size: var(--fs-small);
+  border-bottom: 1px solid var(--border-color);
+  vertical-align: middle;
+}
+
+.grade-table tbody tr {
+  transition: background-color var(--duration-fast);
+}
+
+.grade-table tbody tr:hover {
+  background-color: rgba(217, 119, 6, 0.04);
+}
+
+.grade-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.grade-name {
+  font-weight: var(--fw-bold);
+  color: var(--carbon-black);
+  font-family: 'Courier New', monospace;
+  font-size: var(--fs-body);
+}
+
+.grade-value {
+  font-weight: var(--fw-semibold);
+  color: var(--activation-amber);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .product-detail {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+
+  .spec-row {
+    grid-template-columns: 120px 1fr;
+  }
+
+  .grade-table th,
+  .grade-table td {
+    padding: 0.75rem 0.875rem;
+    font-size: var(--fs-xs);
+  }
+}

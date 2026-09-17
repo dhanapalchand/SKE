@@ -1,0 +1,107 @@
+/* ============================================================
+   About — Company introduction
+   ============================================================ */
+
+.about {
+  background-color: var(--bg-section-alt);
+  color: var(--text-primary);
+}
+
+.about-inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: var(--space-section) var(--gutter);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4xl);
+  align-items: start;
+}
+
+.about-main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+.about-label {
+  font-size: var(--fs-label);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-widest);
+  text-transform: uppercase;
+  color: var(--activation-amber);
+}
+
+.about-headline {
+  font-size: var(--fs-h1);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-tight);
+}
+
+.about-role {
+  font-size: var(--fs-h4);
+  font-weight: var(--fw-semibold);
+  color: var(--tech-grey);
+  letter-spacing: var(--ls-wide);
+}
+
+.about-points {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.about-point {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: 0.625rem 0;
+  font-size: var(--fs-body);
+  color: var(--tech-grey-dark);
+}
+
+.about-point::before {
+  content: '';
+  width: 20px;
+  height: 2px;
+  background: var(--activation-amber);
+  flex-shrink: 0;
+}
+
+/* Mission & Vision */
+.about-mv {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xl);
+}
+
+.about-mv-card {
+  padding: var(--space-2xl);
+  background: #fff;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.about-mv-label {
+  font-size: var(--fs-label);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-widest);
+  text-transform: uppercase;
+  color: var(--activation-amber);
+  margin-bottom: var(--space-md);
+}
+
+.about-mv-text {
+  font-size: var(--fs-body-lg);
+  line-height: var(--lh-relaxed);
+  color: var(--tech-grey-dark);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .about-inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-2xl);
+  }
+}
