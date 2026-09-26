@@ -1,7 +1,9 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { navLinks, company } from '@/data/company';
+import LanguageSwitcher from '@/components/LanguageSwitcher/LanguageSwitcher';
 import './Navbar.css';
 
 export default function Navbar() {
@@ -41,7 +43,14 @@ export default function Navbar() {
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`} id="navbar">
       <div className="navbar-inner">
         <a href="#home" className="navbar-logo" onClick={(e) => handleLinkClick(e, '#home')}>
-          <div className="navbar-logo-icon">SKE</div>
+          <Image
+            src="/ske-logo.png"
+            alt="SKE — Sri Krishi Enterprises logo"
+            width={64}
+            height={48}
+            className="navbar-logo-img"
+            priority
+          />
           <div className="navbar-logo-text">
             <span className="navbar-logo-name">{company.name}</span>
             <span className="navbar-logo-sub">Activated Carbon</span>
@@ -61,14 +70,17 @@ export default function Navbar() {
           ))}
         </div>
 
-        <div className="navbar-cta">
-          <a
-            href="#contact"
-            className="btn btn-primary btn-sm"
-            onClick={(e) => handleLinkClick(e, '#contact')}
-          >
-            Request a Quote
-          </a>
+        <div className="navbar-right">
+          <LanguageSwitcher />
+          <div className="navbar-cta">
+            <a
+              href="#contact"
+              className="btn btn-primary btn-sm"
+              onClick={(e) => handleLinkClick(e, '#contact')}
+            >
+              Request a Quote
+            </a>
+          </div>
         </div>
 
         <button
@@ -94,6 +106,9 @@ export default function Navbar() {
           </a>
         ))}
         <div className="navbar-mobile-cta">
+          <div className="navbar-mobile-lang">
+            <LanguageSwitcher />
+          </div>
           <a
             href="#contact"
             className="btn btn-primary btn-lg"

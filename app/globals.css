@@ -600,3 +600,33 @@ input, textarea, select {
   white-space: nowrap;
   border-width: 0;
 }
+
+
+/* ── Google Translate: suppress default toolbar ── */
+/* The widget injects an iframe banner that pushes body down — hide it completely */
+.goog-te-banner-frame,
+.skiptranslate > iframe,
+.goog-te-gadget,
+#goog-gt-tt,
+.goog-te-balloon-frame,
+.goog-tooltip,
+.goog-tooltip:hover {
+  display: none !important;
+}
+
+/* Prevent GT from offsetting the body top position */
+body {
+  top: 0 !important;
+  position: static !important;
+}
+
+/* Hide the hidden mount element */
+#google_translate_element {
+  display: none !important;
+}
+
+/* Keep translated text looking clean (remove GT underlines) */
+font[style*="top:"] {
+  vertical-align: inherit !important;
+}
+

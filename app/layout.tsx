@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import Script from 'next/script';
 import './globals.css';
 
 const inter = Inter({
@@ -34,7 +35,29 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={inter.variable}>
-      <body>{children}</body>
+      <body>
+        {children}
+
+        {/* ── Google Translate: hidden mount point ── */}
+        <div id="google_translate_element" aria-hidden="true" />
+
+        {/* ── Google Translate: widget init ── */}
+        <Script id="gt-init" strategy="afterInteractive">{`
+          window.googleTranslateElementInit = function () {
+            new window.google.translate.TranslateElement(
+              { pageLanguage: 'en', autoDisplay: false },
+              'google_translate_element'
+            );
+          };
+        `}</Script>
+
+        {/* ── Google Translate: widget script ── */}
+        <Script
+          src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+          strategy="afterInteractive"
+        />
+      </body>
     </html>
   );
 }
+

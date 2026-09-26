@@ -1,0 +1,33 @@
+{
+  "nav": {
+    "about": "About",
+    "process": "Process",
+    "products": "Products",
+    "applications": "Applications",
+    "whyChoose": "Why Us",
+    "quality": "Quality",
+    "packaging": "Packaging",
+    "supply": "Global Supply",
+    "faq": "FAQ",
+    "contact": "Contact",
+    "requestQuote": "Request a Quote"
+  },
+  "hero": {
+    "label": "Premium Coconut Shell Activated Carbon",
+    "headline": "Purity Forged from Nature",
+    "subheadline": "World-class activated carbon from India's finest coconut shells — engineered for water treatment, air purification, and industrial excellence.",
+    "cta": "Explore Products",
+    "quote": "Request a Quote",
+    "scroll": "Scroll to explore"
+  },
+  "about": {
+    "label": "About Us",
+    "title": "Sri Krishi Enterprises",
+    "description": "Based in Tamil Nadu, India, we are a trusted supplier and exporter of premium coconut shell activated carbon, serving global industries with precision-engineered carbon solutions."
+  },
+  "languages": {
+    "en": "English",
+    "ta": "தமிழ்",
+    "hi": "हिंदी"
+  }
+}
