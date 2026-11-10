@@ -17,23 +17,6 @@
   z-index: 2;
 }
 
-/* Background map */
-.global-map-bg {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0.08;
-}
-
-.global-map-bg svg {
-  width: 90%;
-  max-width: 1200px;
-  height: auto;
-}
-
 .global-supply-header {
   text-align: center;
   margin-bottom: var(--space-4xl);
@@ -68,7 +51,7 @@
 .global-map-container {
   position: relative;
   width: 100%;
-  max-width: 900px;
+  max-width: 960px;
   margin: 0 auto var(--space-4xl);
   aspect-ratio: 2/1;
 }
@@ -78,43 +61,74 @@
   height: 100%;
 }
 
+/* ── Continent shapes ── */
+.continent-path {
+  fill: rgba(255, 255, 255, 0.06);
+  stroke: rgba(255, 255, 255, 0.12);
+  stroke-width: 0.8;
+  transition: fill 0.4s ease;
+}
+
+.continent-shapes:hover .continent-path {
+  fill: rgba(255, 255, 255, 0.08);
+}
+
+/* India highlighted shape */
+.india-shape {
+  fill: rgba(217, 119, 6, 0.2);
+  stroke: rgba(217, 119, 6, 0.5);
+  stroke-width: 1.2;
+  filter: drop-shadow(0 0 6px rgba(217, 119, 6, 0.15));
+  transition: fill 0.4s ease;
+}
+
+.india-shape:hover {
+  fill: rgba(217, 119, 6, 0.3);
+}
+
+/* ── Supply route curves ── */
+.supply-curve {
+  fill: none;
+  stroke: var(--activation-amber);
+  stroke-width: 1;
+  stroke-dasharray: 6 4;
+  opacity: 0.35;
+  animation: dash-flow 3s linear infinite;
+}
+
+@keyframes dash-flow {
+  to { stroke-dashoffset: -20; }
+}
+
 /* India origin dot */
 .origin-dot {
   fill: var(--activation-amber);
-  filter: drop-shadow(0 0 8px rgba(217, 119, 6, 0.6));
+  filter: drop-shadow(0 0 10px rgba(217, 119, 6, 0.7));
 }
 
 .origin-pulse {
   fill: none;
   stroke: var(--activation-amber);
-  stroke-width: 1;
+  stroke-width: 1.5;
   opacity: 0;
-  animation: origin-pulse 2s ease-out infinite;
+  animation: origin-pulse 2.5s ease-out infinite;
 }
 
 @keyframes origin-pulse {
-  0% { r: 4; opacity: 0.8; }
-  100% { r: 20; opacity: 0; }
-}
-
-/* Connection lines */
-.supply-line {
-  fill: none;
-  stroke: var(--activation-amber);
-  stroke-width: 1;
-  stroke-dasharray: 4 4;
-  opacity: 0.3;
-  animation: dash-flow 2s linear infinite;
-}
-
-@keyframes dash-flow {
-  to { stroke-dashoffset: -16; }
+  0% { r: 6; opacity: 0.7; }
+  100% { r: 30; opacity: 0; }
 }
 
 /* Region dots */
+.region-dot-outer {
+  fill: rgba(217, 119, 6, 0.1);
+  stroke: rgba(217, 119, 6, 0.3);
+  stroke-width: 0.5;
+}
+
 .region-dot {
-  fill: rgba(255,255,255,0.4);
-  transition: fill 0.3s, r 0.3s;
+  fill: rgba(255, 255, 255, 0.5);
+  transition: fill 0.3s;
 }
 
 .region-dot:hover {
@@ -124,9 +138,10 @@
 /* Region labels */
 .region-label {
   font-size: 9px;
-  fill: rgba(255,255,255,0.4);
-  font-weight: 500;
-  letter-spacing: 0.05em;
+  fill: rgba(255, 255, 255, 0.5);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
 /* Origin badge */
@@ -159,10 +174,10 @@
 
 .global-region-tag {
   padding: 0.625rem 1.25rem;
-  border: 1px solid rgba(255,255,255,0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: var(--radius-full);
   font-size: var(--fs-small);
-  color: rgba(255,255,255,0.6);
+  color: rgba(255, 255, 255, 0.6);
   transition: border-color var(--duration-normal), color var(--duration-normal);
 }
 
@@ -175,5 +190,9 @@
 @media (max-width: 768px) {
   .global-map-container {
     aspect-ratio: 3/2;
+  }
+
+  .region-label {
+    font-size: 7px;
   }
 }

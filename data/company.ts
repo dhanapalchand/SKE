@@ -359,9 +359,7 @@ export const navLinks = [
   { label: 'Home', href: '#home' },
   { label: 'About', href: '#about' },
   { label: 'Products', href: '#products' },
-  { label: 'Process', href: '#process' },
   { label: 'Applications', href: '#applications' },
-  { label: 'Quality', href: '#quality' },
   { label: 'Packaging', href: '#packaging' },
   { label: 'Global Supply', href: '#global-supply' },
   { label: 'Contact', href: '#contact' },
@@ -370,12 +368,9 @@ export const navLinks = [
 export const footerLinks = [
   { label: 'About', href: '#about' },
   { label: 'Products', href: '#products' },
-  { label: 'Process', href: '#process' },
   { label: 'Applications', href: '#applications' },
-  { label: 'Quality', href: '#quality' },
   { label: 'Packaging', href: '#packaging' },
   { label: 'Global Supply', href: '#global-supply' },
-  { label: 'FAQ', href: '#faq' },
   { label: 'Contact', href: '#contact' },
 ];
 
