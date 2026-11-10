@@ -11,6 +11,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://www.srikrishienterprises.com'),
   title: 'Sri Krishi Enterprises — Premium Coconut Shell Activated Carbon | Supplier & Exporter',
   description:
     'Sri Krishi Enterprises is a Tamil Nadu, India based supplier and exporter of premium coconut shell activated carbon with controlled iodine value, CTC, mesh size for water treatment, air purification and industrial applications.',
@@ -23,12 +24,37 @@ export const metadata: Metadata = {
     'coconut shell carbon manufacturer',
     'Sri Krishi Enterprises',
   ],
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: '48x48' },
+      { url: '/icon.png', sizes: '192x192', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/apple-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+  },
   openGraph: {
     title: 'Sri Krishi Enterprises — Premium Coconut Shell Activated Carbon',
     description:
       'High-quality coconut shell-based activated carbon for global industries. Supplier & Exporter from Tamil Nadu, India.',
     type: 'website',
     locale: 'en_US',
+    siteName: 'Sri Krishi Enterprises',
+    images: [
+      {
+        url: '/og-logo.png',
+        width: 512,
+        height: 512,
+        alt: 'Sri Krishi Enterprises Logo',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary',
+    title: 'Sri Krishi Enterprises — Premium Coconut Shell Activated Carbon',
+    description:
+      'High-quality coconut shell-based activated carbon for global industries. Supplier & Exporter from Tamil Nadu, India.',
+    images: ['/og-logo.png'],
   },
 };
 
