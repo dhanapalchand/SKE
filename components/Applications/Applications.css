@@ -48,24 +48,21 @@
 .applications-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  background: rgba(255,255,255,0.06);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
+  gap: 1.5rem;
 }
 
 .application-card {
   position: relative;
   background: var(--charcoal);
-  padding: var(--space-2xl) var(--space-xl);
+  border-radius: var(--radius-lg);
   display: flex;
   flex-direction: column;
-  gap: var(--space-md);
   transition: background-color var(--duration-normal) var(--ease-out),
-              transform var(--duration-normal) var(--ease-out);
+              transform var(--duration-normal) var(--ease-out),
+              box-shadow var(--duration-normal) var(--ease-out);
   cursor: default;
-  min-height: 200px;
   overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .application-card::before {
@@ -79,6 +76,7 @@
   transform: scaleX(0);
   transform-origin: left;
   transition: transform var(--duration-normal) var(--ease-out);
+  z-index: 3;
 }
 
 .application-card:hover::before {
@@ -87,6 +85,32 @@
 
 .application-card:hover {
   background: var(--charcoal-light);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+.application-card-image {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.application-card-image img {
+  transition: transform var(--duration-normal) var(--ease-out);
+}
+
+.application-card:hover .application-card-image img {
+  transform: scale(1.06);
+}
+
+.application-card-content {
+  padding: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  flex-grow: 1;
 }
 
 /* Particle effect on hover */
@@ -95,6 +119,7 @@
   inset: 0;
   pointer-events: none;
   overflow: hidden;
+  z-index: 2;
 }
 
 .app-particle {
@@ -113,11 +138,19 @@
 }
 
 .application-card-number {
+  position: absolute;
+  top: var(--space-md);
+  right: var(--space-md);
   font-size: var(--fs-xs);
   font-weight: var(--fw-semibold);
   letter-spacing: var(--ls-widest);
   color: var(--activation-amber);
-  opacity: 0.6;
+  background: rgba(18, 18, 18, 0.75);
+  backdrop-filter: blur(4px);
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(217, 119, 6, 0.3);
+  z-index: 2;
 }
 
 .application-card-title {
@@ -128,7 +161,7 @@
 
 .application-card-desc {
   font-size: var(--fs-small);
-  color: rgba(255,255,255,0.5);
+  color: rgba(255,255,255,0.6);
   line-height: var(--lh-relaxed);
 }
 
@@ -141,18 +174,12 @@
   align-items: center;
   justify-content: center;
   color: var(--activation-amber);
-  margin-bottom: var(--space-sm);
+  margin-bottom: var(--space-xs);
 }
 
 .application-card-icon svg {
   width: 20px;
   height: 20px;
-}
-
-/* Last card spanning full width if odd number */
-.application-card:last-child:nth-child(odd) {
-  grid-column: 1 / -1;
-  max-width: none;
 }
 
 /* Responsive */
@@ -167,8 +194,7 @@
     grid-template-columns: 1fr;
   }
 
-  .application-card {
-    padding: var(--space-xl);
-    min-height: auto;
+  .application-card-content {
+    padding: var(--space-lg);
   }
 }

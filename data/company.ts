@@ -160,43 +160,87 @@ export const productSpecs = {
 export interface ApplicationData {
   title: string;
   description: string;
+  image: string;
 }
 
 export const applications: ApplicationData[] = [
   {
-    title: 'Water Treatment',
+    title: 'Chemical Treatment Purification',
     description:
-      'Adsorption and removal of organic contaminants, colour, odour and impurities.',
+      'Targets chemical impurities to ensure cleaner, safer industrial outputs.',
+    image: '/images/chemical.jpeg',
   },
   {
-    title: 'Drinking Water Purification',
+    title: 'Food and Beverages Industry',
     description:
-      'Purification of drinking water to meet quality and safety standards.',
+      'Purifies liquids, improves flavor, and ensures food-grade safety standards.',
+    image: '/images/food.jpeg',
   },
   {
-    title: 'Industrial Water Treatment',
+    title: 'Dyestuffs & Dyes Intermediates',
     description:
-      'Treatment of process water and wastewater in industrial facilities.',
+      'Removes color bodies and impurities in dye production processes.',
+    image: '/images/dyestuffs.jpeg',
   },
   {
-    title: 'Air & Gas Purification',
+    title: 'Medicinal & Pharmaceutical Treatment',
     description:
-      'Removal of volatile organic compounds, odours and contaminants from air and gas streams.',
+      'Purifies ingredients and intermediates in critical pharma formulations.',
+    image: '/images/pharma.jpeg',
   },
   {
-    title: 'Food & Beverage Processing',
+    title: 'Oil & Gas / Petrochemical Applications',
     description:
-      'Decolourization, purification and quality improvement in food and beverage production.',
+      'Enhances process purity and removes sulfur, odors, and contaminants.',
+    image: '/images/oil-gas.jpg',
   },
   {
-    title: 'Chemical & Industrial Processing',
+    title: 'Edible / Vegetable Oil Refining & Purifications',
     description:
-      'Catalyst support, solvent recovery and purification in chemical processes.',
+      'Improves clarity, taste, and stability in oil purification stages.',
+    image: '/images/refined-oil.jpeg',
   },
   {
-    title: 'Gold Recovery',
+    title: 'Odour Suppression',
     description:
-      'Adsorption of gold from cyanide solutions in mining and precious metal recovery.',
+      'Eliminates industrial odors effectively with vapor-phase carbon solutions.',
+    image: '/images/odour-suppression.jpeg',
+  },
+  {
+    title: 'Sugar Refinery',
+    description:
+      'Decolorizes and purifies sugar solutions for improved product quality.',
+    image: '/images/sugar-refinery.jpg',
+  },
+  {
+    title: 'Gold/Metal/Mining Applications',
+    description:
+      'Purifies metal extraction processes with high adsorption and durability.',
+    image: '/images/gold-mining.jpg',
+  },
+  {
+    title: 'Industrial Waste Water/Effluent Treatment',
+    description:
+      'Removes harmful pollutants for safer discharge and regulatory compliance.',
+    image: '/images/water-treatment.png',
+  },
+  {
+    title: 'Waste Gas Treatment',
+    description:
+      'Captures airborne contaminants to protect air quality and equipment.',
+    image: '/images/waste-gas.jpg',
+  },
+  {
+    title: 'Air Purification, Auto Emission Control & Solvent Recovery',
+    description:
+      'Controls emissions and VOCs in industrial and environmental systems.',
+    image: '/images/air-purification.jpg',
+  },
+  {
+    title: 'Cosmetic & Personal Care',
+    description:
+      'Filters impurities in active ingredients for safer, cleaner formulations.',
+    image: '/images/cosmetics.jpeg',
   },
 ];
 

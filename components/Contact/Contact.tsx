@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { contactFields, company } from '@/data/company';
+import { company } from '@/data/company';
 import { Phone, MapPin, MessageCircle } from 'lucide-react';
 import './Contact.css';
 
@@ -26,23 +26,16 @@ export default function Contact() {
     return () => observer.disconnect();
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Form submission logic to be implemented
-    alert('Thank you for your enquiry. We will respond shortly.');
-  };
-
   return (
     <section className="contact section" id="contact" ref={sectionRef}>
       <div className="contact-inner">
         <div className="contact-info">
-          <p className="contact-label reveal">Contact</p>
+          <p className="contact-label reveal">Contact Us</p>
           <h2 className="contact-headline reveal delay-1">
             Let&apos;s Discuss Your Activated Carbon Requirement
           </h2>
           <p className="contact-subtext reveal delay-2">
-            Send us your required grade, iodine value, CTC, mesh size, quantity,
-            packaging and delivery location.
+            Reach out to us directly for enquiries regarding grades, iodine value, CTC, mesh size, quantity, packaging, and global delivery.
           </p>
 
           <div className="contact-details reveal delay-3">
@@ -52,7 +45,9 @@ export default function Contact() {
               </div>
               <div className="contact-detail-content">
                 <span className="contact-detail-label">Phone / WhatsApp</span>
-                <span className="contact-detail-value">{company.phone}</span>
+                <a href={`tel:${company.phone.replace(/\s+/g, '')}`} className="contact-detail-value">
+                  {company.phone}
+                </a>
               </div>
             </div>
 
@@ -78,46 +73,6 @@ export default function Contact() {
               Chat on WhatsApp
             </a>
           </div>
-        </div>
-
-        <div className="contact-form-wrapper reveal delay-2">
-          <form className="contact-form" onSubmit={handleSubmit}>
-            {contactFields.map((field) => (
-              <div
-                key={field.name}
-                className={`form-group ${field.type === 'textarea' ? 'full-width' : ''}`}
-              >
-                <label className="form-label" htmlFor={field.name}>
-                  {field.label}
-                  {field.required && ' *'}
-                </label>
-                {field.type === 'textarea' ? (
-                  <textarea
-                    className="form-textarea"
-                    id={field.name}
-                    name={field.name}
-                    placeholder={`Enter ${field.label.toLowerCase()}`}
-                    required={field.required}
-                  />
-                ) : (
-                  <input
-                    className="form-input"
-                    id={field.name}
-                    name={field.name}
-                    type={field.type}
-                    placeholder={`Enter ${field.label.toLowerCase()}`}
-                    required={field.required}
-                  />
-                )}
-              </div>
-            ))}
-
-            <div className="contact-form-submit">
-              <button type="submit" className="btn btn-primary btn-lg">
-                Request a Quote
-              </button>
-            </div>
-          </form>
         </div>
       </div>
     </section>

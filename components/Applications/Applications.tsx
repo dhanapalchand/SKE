@@ -1,24 +1,23 @@
 'use client';
 
-import { useEffect, useRef, useMemo } from 'react';
+import { useEffect, useRef } from 'react';
+import Image from 'next/image';
 import { applications } from '@/data/company';
-import { Droplets, GlassWater, Factory, Wind, UtensilsCrossed, FlaskConical, Gem } from 'lucide-react';
+import { Droplets, GlassWater, Factory, Wind, UtensilsCrossed, FlaskConical, Gem, Flame, Beaker, Droplet, Leaf, Pipette, Sparkles } from 'lucide-react';
 import './Applications.css';
 
-const iconMap = [Droplets, GlassWater, Factory, Wind, UtensilsCrossed, FlaskConical, Gem];
+const iconMap = [Droplets, GlassWater, Beaker, FlaskConical, Flame, Droplet, Wind, Factory, Gem, Droplets, Factory, Leaf, Sparkles];
+
+const staticParticles = [
+  { id: 0, left: 25, top: 35, driftX: -20, driftY: -100, delay: 0 },
+  { id: 1, left: 65, top: 50, driftX: 30, driftY: -80, delay: 0.4 },
+  { id: 2, left: 45, top: 65, driftX: -15, driftY: -110, delay: 0.8 },
+  { id: 3, left: 80, top: 30, driftX: 25, driftY: -95, delay: 1.2 },
+  { id: 4, left: 20, top: 75, driftX: 15, driftY: -105, delay: 1.6 },
+];
 
 export default function Applications() {
   const sectionRef = useRef<HTMLDivElement>(null);
-
-  const particles = useMemo(() =>
-    Array.from({ length: 5 }).map((_, i) => ({
-      id: i,
-      left: 10 + Math.random() * 80,
-      top: 20 + Math.random() * 60,
-      driftX: (Math.random() - 0.5) * 80,
-      driftY: -60 - Math.random() * 80,
-      delay: i * 0.4,
-    })), []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -57,7 +56,7 @@ export default function Applications() {
             return (
               <div key={app.title} className="application-card reveal" style={{ transitionDelay: `${i * 0.08}s` }}>
                 <div className="application-card-particles">
-                  {particles.map((p) => (
+                  {staticParticles.map((p) => (
                     <div
                       key={p.id}
                       className="app-particle"
@@ -71,14 +70,25 @@ export default function Applications() {
                     />
                   ))}
                 </div>
-                <div className="application-card-icon">
-                  <Icon />
+                <div className="application-card-image">
+                  <Image
+                    src={app.image}
+                    alt={app.title}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    style={{ objectFit: 'cover' }}
+                  />
+                  <span className="application-card-number">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
                 </div>
-                <span className="application-card-number">
-                  {String(i + 1).padStart(2, '0')}
-                </span>
-                <h3 className="application-card-title">{app.title}</h3>
-                <p className="application-card-desc">{app.description}</p>
+                <div className="application-card-content">
+                  <div className="application-card-icon">
+                    <Icon />
+                  </div>
+                  <h3 className="application-card-title">{app.title}</h3>
+                  <p className="application-card-desc">{app.description}</p>
+                </div>
               </div>
             );
           })}
